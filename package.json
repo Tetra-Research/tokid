@@ -1,0 +1,30 @@
+{
+  "name": "tokid",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Token-native identifier experiments and tokenizer analysis",
+  "type": "module",
+  "bin": {
+    "tokid": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "analyze": "npm run build --silent && node dist/index.js analyze-samples",
+    "analyze:words": "npm run build --silent && node dist/index.js analyze-words data/demo-words.txt"
+  },
+  "keywords": [
+    "tokenizer",
+    "identifiers",
+    "llm",
+    "tiktoken"
+  ],
+  "author": "Tyler O'Briant",
+  "license": "ISC",
+  "dependencies": {
+    "tiktoken": "^1.0.16"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "typescript": "^5.8.3"
+  }
+}
