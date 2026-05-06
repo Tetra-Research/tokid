@@ -24,5 +24,5 @@
 
 ## 5. Post-Release Status
 
-- [ ] 5.1 Update the support matrix and package READMEs after each successful registry release so published versus planned ecosystems stay explicit
+- [x] 5.1 Update the support matrix and package READMEs after each successful registry release so published versus planned ecosystems stay explicit
 - [x] 5.2 Record any blocked registries, missing metadata, or registry-specific follow-up work without weakening the shared release gate

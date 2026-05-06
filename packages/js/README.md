@@ -15,7 +15,7 @@ It is a different trade:
 
 Status: early alpha.
 Registry readiness: `publish-now`.
-Registry status: live on npm as `0.1.0-alpha.1`.
+Registry status: live on npm; current `alpha` dist-tag is `0.1.0-alpha.3`.
 Current runtime target: Node.js `20+`, ESM, server-side usage.
 Other first-party SDKs live in the main repo under `packages/python`, `packages/go`, `packages/rust`, `packages/java`, and `packages/dotnet`.
 

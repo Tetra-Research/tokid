@@ -62,8 +62,8 @@ Current rollout state:
 
 | SDK | Channel | Wave | Readiness | Registry status |
 |---|---|---|---|---|
-| JavaScript / TypeScript | npm `tokid` | 1 | `publish-now` | live on npm as `0.1.0-alpha.1` |
-| Python | PyPI `tokid` | 2 | `publish-now` | not yet published |
+| JavaScript / TypeScript | npm `tokid` | 1 | `publish-now` | live on npm; `alpha` dist-tag is `0.1.0-alpha.3` |
+| Python | PyPI `tokid` | 2 | `publish-now` | live on PyPI as `0.1.0a3` |
 | Go | `github.com/Tetra-Research/tokid/packages/go` | 2 | `publish-now` | not yet tagged |
 | Rust | crates.io `tokid` | 2 | `publish-now` | not yet published |
 | Java / Kotlin | Maven Central `io.tokid:tokid` | 3 | `publish-now` | not yet published |
@@ -113,7 +113,7 @@ Notes by ecosystem:
 ## Registry-Specific Notes
 
 - npm trusted publishing is configured against `.github/workflows/publish.yml`; official CI releases no longer require `NPM_TOKEN`.
-- PyPI has a pending trusted publisher configured against `.github/workflows/publish.yml`; the first successful CI publish will create the `tokid` project.
+- PyPI trusted publishing is now live against `.github/workflows/publish.yml`.
 - Manual `release:pypi` runs still require credentials accepted by `twine upload`.
 - crates.io publish requires a cargo registry token.
 - Go release tagging requires a clean tree and git push access.
@@ -126,9 +126,9 @@ If a registry is blocked, keep the SDK in its current readiness state and update
 
 Current known blockers from this checkout:
 
-- npm is already live; the next npm release should go through the trusted-publishing workflow
-- PyPI is pending first live publish; the trusted publisher is configured but the project does not exist yet
+- npm is live; the current `alpha` dist-tag is `0.1.0-alpha.3` while `latest` still points at `0.1.0-alpha.1`
+- PyPI is live as `0.1.0a3`
 - crates.io publish is blocked locally until a cargo token is configured
-- official Go release tagging is blocked until the current release hardening changes are committed and pushed
+- official Go release tagging is still pending execution for the first public module tag
 - Maven Central deploy is blocked locally until credentials and signing are configured
 - NuGet push is blocked locally until a NuGet API key is configured

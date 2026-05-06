@@ -11,7 +11,7 @@ Status: early alpha.
 Capability tier: `core`.
 Runtime target: Python `3.11+`.
 Registry readiness: `publish-now`.
-Registry status: Wave 2 target, not yet published.
+Registry status: live on PyPI as `0.1.0a3`.
 Package name: `tokid` on PyPI.
 
 ## What You Get
@@ -30,16 +30,14 @@ The current alpha ships two built-in profiles:
 
 ## Install
 
-Until the first PyPI release is published, install from a local checkout:
+```bash
+pip install tokid
+```
+
+For local development against a checkout:
 
 ```bash
 pip install ./packages/python
-```
-
-After publish, the install command will be:
-
-```bash
-pip install tokid
 ```
 
 ## Quick Start

@@ -42,8 +42,8 @@ Current official first-party SDKs:
 
 | SDK | Path | Channel | Tier | Wave | Readiness | Registry status |
 |---|---|---|---|---|---|---|
-| JavaScript / TypeScript | `packages/js` | npm `tokid` | `full` | 1 | `publish-now` | live on npm as `0.1.0-alpha.1` |
-| Python | `packages/python` | PyPI `tokid` | `core` | 2 | `publish-now` | not yet published |
+| JavaScript / TypeScript | `packages/js` | npm `tokid` | `full` | 1 | `publish-now` | live on npm; `alpha` dist-tag is `0.1.0-alpha.3` |
+| Python | `packages/python` | PyPI `tokid` | `core` | 2 | `publish-now` | live on PyPI as `0.1.0a3` |
 | Go | `packages/go` | `github.com/Tetra-Research/tokid/packages/go` | `core` | 2 | `publish-now` | not yet tagged |
 | Rust | `packages/rust` | crates.io `tokid` | `full` | 2 | `publish-now` | not yet published |
 | Java / Kotlin | `packages/java` | Maven Central `io.tokid:tokid` | `core` | 3 | `publish-now` | not yet published |
