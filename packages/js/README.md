@@ -286,8 +286,8 @@ Maintainer release flow:
 
 ```bash
 npm run release:npm:dry-run
-git tag v0.1.0-alpha.2
-git push origin v0.1.0-alpha.2
+git tag v0.1.0-alpha.3
+git push origin v0.1.0-alpha.3
 ```
 
 `publish.yml` is the preferred live path. `npm run release:npm` remains as a manual fallback.

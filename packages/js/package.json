@@ -1,6 +1,6 @@
 {
   "name": "tokid",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "Token-native IDs for LLM-facing systems",
   "type": "module",
   "types": "./dist/index.d.ts",

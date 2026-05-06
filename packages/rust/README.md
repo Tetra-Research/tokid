@@ -43,7 +43,7 @@ After publish, the dependency will be:
 
 ```toml
 [dependencies]
-tokid = "0.1.0-alpha.2"
+tokid = "0.1.0-alpha.3"
 ```
 
 ## Quick Start

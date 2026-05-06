@@ -10,3 +10,9 @@ packages/dotnet/**/obj
 packages/dotnet/**/~
 packages/python/**/__pycache__
 study/**/results
+!study/wordfreq-atom-ranking/results/
+study/wordfreq-atom-ranking/results/*
+!study/wordfreq-atom-ranking/results/scored_candidates.csv
+!study/transport-contexts/results/
+study/transport-contexts/results/*
+!study/transport-contexts/results/transport_safe_winners.csv
