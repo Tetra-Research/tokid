@@ -7,4 +7,6 @@ packages/java/out
 packages/rust/target
 packages/dotnet/**/bin
 packages/dotnet/**/obj
+packages/dotnet/**/~
+packages/python/**/__pycache__
 study/**/results
