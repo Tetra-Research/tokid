@@ -280,6 +280,16 @@ npm run verify:profiles
 npm run build
 npm test
 npm run verify:pack
+npm run smoke:pack
+npm run release:check
+```
+
+Maintainer release flow:
+
+```bash
+npm run release:check
+git tag v0.1.0-alpha.1
+git push origin v0.1.0-alpha.1
 ```
 
 Research and benchmarking commands remain in the repo as well:

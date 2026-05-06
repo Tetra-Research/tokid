@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import {
   DEFAULT_PROFILE_ID,
   DEFAULT_TOKID_LENGTH,

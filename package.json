@@ -1,6 +1,6 @@
 {
   "name": "tokid",
-  "version": "0.0.1",
+  "version": "0.1.0-alpha.1",
   "description": "Token-native IDs for LLM-facing systems",
   "type": "module",
   "types": "./dist/package/index.d.ts",
@@ -34,6 +34,9 @@
     "build:dev": "npm run build:profiles --silent && rm -rf dist/dev && tsc -p tsconfig.json",
     "test": "npm run build:dev --silent && node --test dist/dev/test/*.test.js",
     "verify:pack": "npm run build:package --silent && node tools/verify-packlist.mjs",
+    "smoke:pack": "node tools/smoke-pack.mjs",
+    "release:check": "npm run verify:profiles --silent && npm test && npm run verify:pack && npm run smoke:pack",
+    "prepublishOnly": "npm run release:check",
     "analyze": "npm run analyze:sanity-check",
     "analyze:sanity-check": "npm run build:dev --silent && node dist/dev/study/sanity-check/index.js analyze-samples",
     "analyze:words": "npm run analyze:words:sanity-check",
@@ -62,6 +65,9 @@
     "url": "https://github.com/Tetra-Research/tokid/issues"
   },
   "homepage": "https://github.com/Tetra-Research/tokid#readme",
+  "publishConfig": {
+    "tag": "alpha"
+  },
   "engines": {
     "node": ">=20"
   },
