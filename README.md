@@ -102,6 +102,27 @@ Against the current baseline families in `cl100k_base`, the study means are:
 - `base62_16`: `15.96`
 - `decimal_u64`: `6.95`
 
+## Good Fits
+
+`tokid` is most useful when identifiers are part of the model-facing surface instead of just backend plumbing.
+
+Good examples:
+
+- agent, workflow, and job systems where run IDs and task IDs keep showing up in prompts and tool responses
+- MCP tools and tool-call APIs where many objects carry an `id` field and those IDs become part of the model context
+- AI applications with document, snippet, ticket, session, trace, or evaluation IDs that the model has to read and refer back to
+- structured JSON payloads that get sent to or returned from models, where identifier text repeats across many objects
+- logs, traces, and debugging summaries that get fed back into an LLM for diagnosis
+- support or ops copilots where the model needs to mention and disambiguate many entities in natural text
+- systems that want one durable stored ID plus a cheaper prompt-facing view of the same logical identifier
+
+Less useful examples:
+
+- ordinary backend primary keys the model never sees
+- public APIs where byte length matters more than token cost
+- applications where UUID or ULID familiarity matters more than tokenizer behavior
+- authentication tokens, bearer secrets, or tamper-proof capability URLs
+
 ## What Lives Here
 
 This repo now has four layers:
