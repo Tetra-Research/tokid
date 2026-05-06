@@ -4,6 +4,7 @@ dist
 .tooling
 packages/js/dist
 packages/java/out
+packages/java/target
 packages/rust/target
 packages/dotnet/**/bin
 packages/dotnet/**/obj
