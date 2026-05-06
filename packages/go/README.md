@@ -12,7 +12,7 @@ Capability tier: `core`.
 Runtime target: Go `1.22+`.
 Module path: `github.com/Tetra-Research/tokid/packages/go`.
 Registry readiness: `publish-now`.
-Registry status: tag pushed as `packages/go/v0.1.0-alpha.3`; anonymous `go get` still depends on repo visibility and auth.
+Registry status: live by public tag `packages/go/v0.1.0-alpha.4`.
 
 ## What You Get
 
@@ -30,7 +30,13 @@ The current alpha ships two built-in profiles:
 
 ## Install
 
-During alpha, use a local checkout with a `replace` directive:
+Install the tagged module directly:
+
+```bash
+go get github.com/Tetra-Research/tokid/packages/go@v0.1.0-alpha.4
+```
+
+For local development against a checkout, use a `replace` directive:
 
 ```go
 require github.com/Tetra-Research/tokid/packages/go v0.0.0
@@ -101,12 +107,10 @@ profile := factory.Profile()
 
 `0` means “use the default” for `length` and `format`.
 
-After tagged public releases begin, you will be able to depend on the module directly by version.
-
-The first planned public tag is:
+Current public tag:
 
 ```bash
-go get github.com/Tetra-Research/tokid/packages/go@v0.1.0-alpha.3
+go get github.com/Tetra-Research/tokid/packages/go@v0.1.0-alpha.4
 ```
 
 ## Prompt, Transport, Envelope

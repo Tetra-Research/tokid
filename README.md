@@ -119,10 +119,10 @@ Current official first-party SDKs:
 
 | SDK | Path | Channel | Tier | Wave | Readiness | Registry status |
 |---|---|---|---|---|---|---|
-| JavaScript / TypeScript | `packages/js` | npm `tokid` | `full` | 1 | `publish-now` | live on npm; `alpha` dist-tag is `0.1.0-alpha.3` |
-| Python | `packages/python` | PyPI `tokid` | `core` | 2 | `publish-now` | live on PyPI as `0.1.0a3` |
-| Go | `packages/go` | `github.com/Tetra-Research/tokid/packages/go` | `core` | 2 | `publish-now` | tag pushed as `packages/go/v0.1.0-alpha.3`; anonymous `go get` still depends on repo visibility |
-| Rust | `packages/rust` | crates.io `tokid` | `full` | 2 | `publish-now` | live on crates.io as `0.1.0-alpha.3` |
+| JavaScript / TypeScript | `packages/js` | npm `tokid` | `full` | 1 | `publish-now` | live on npm; `alpha` dist-tag is `0.1.0-alpha.4` |
+| Python | `packages/python` | PyPI `tokid` | `core` | 2 | `publish-now` | live on PyPI as `0.1.0a4` |
+| Go | `packages/go` | `github.com/Tetra-Research/tokid/packages/go` | `core` | 2 | `publish-now` | live by public tag `packages/go/v0.1.0-alpha.4` |
+| Rust | `packages/rust` | crates.io `tokid` | `full` | 2 | `publish-now` | live on crates.io as `0.1.0-alpha.4` |
 | Java / Kotlin | `packages/java` | Maven Central `io.tetraresearch.tokid:tokid` | `core` | 3 | `publish-now` | todo: Sonatype still is not resolving the public signing key for first publish |
 | C# | `packages/dotnet` | NuGet `Tokid` | `core` | 3 | `publish-now` | todo: publish after a nuget.org account and API key exist |
 

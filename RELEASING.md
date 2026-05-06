@@ -33,12 +33,12 @@ All first-party SDKs track the same logical alpha line, but each registry uses i
 
 | Ecosystem | Release version |
 |---|---|
-| npm | `0.1.0-alpha.3` |
-| PyPI | `0.1.0a3` |
-| crates.io | `0.1.0-alpha.3` |
-| Go module tag | `packages/go/v0.1.0-alpha.3` |
-| Maven Central | `0.1.0-alpha.3` |
-| NuGet | `0.1.0-alpha.3` |
+| npm | `0.1.0-alpha.4` |
+| PyPI | `0.1.0a4` |
+| crates.io | `0.1.0-alpha.4` |
+| Go module tag | `packages/go/v0.1.0-alpha.4` |
+| Maven Central | `0.1.0-alpha.4` |
+| NuGet | `0.1.0-alpha.4` |
 
 The canonical release number is driven from the JavaScript SDK version for this alpha line. When the logical release changes, update every first-party package version before tagging or uploading.
 
@@ -62,10 +62,10 @@ Current rollout state:
 
 | SDK | Channel | Wave | Readiness | Registry status |
 |---|---|---|---|---|
-| JavaScript / TypeScript | npm `tokid` | 1 | `publish-now` | live on npm; `alpha` dist-tag is `0.1.0-alpha.3` |
-| Python | PyPI `tokid` | 2 | `publish-now` | live on PyPI as `0.1.0a3` |
-| Go | `github.com/Tetra-Research/tokid/packages/go` | 2 | `publish-now` | tag pushed as `packages/go/v0.1.0-alpha.3`; anonymous `go get` still depends on repo visibility |
-| Rust | crates.io `tokid` | 2 | `publish-now` | live on crates.io as `0.1.0-alpha.3` |
+| JavaScript / TypeScript | npm `tokid` | 1 | `publish-now` | live on npm; `alpha` dist-tag is `0.1.0-alpha.4` |
+| Python | PyPI `tokid` | 2 | `publish-now` | live on PyPI as `0.1.0a4` |
+| Go | `github.com/Tetra-Research/tokid/packages/go` | 2 | `publish-now` | live by public tag `packages/go/v0.1.0-alpha.4` |
+| Rust | crates.io `tokid` | 2 | `publish-now` | live on crates.io as `0.1.0-alpha.4` |
 | Java / Kotlin | Maven Central `io.tetraresearch.tokid:tokid` | 3 | `publish-now` | todo: Sonatype still is not resolving the public signing key for first publish |
 | C# / .NET | NuGet `Tokid` | 3 | `publish-now` | todo: publish after a nuget.org account and API key exist |
 
@@ -96,8 +96,8 @@ npm run release:nuget
 Trusted-publishing release path for npm and PyPI:
 
 ```bash
-git tag v0.1.0-alpha.3
-git push origin v0.1.0-alpha.3
+git tag v0.1.0-alpha.4
+git push origin v0.1.0-alpha.4
 ```
 
 Notes by ecosystem:
@@ -126,9 +126,9 @@ If a registry is blocked, keep the SDK in its current readiness state and update
 
 Current known blockers from this checkout:
 
-- npm is live; the current `alpha` dist-tag is `0.1.0-alpha.3` while `latest` still points at `0.1.0-alpha.1`
-- PyPI is live as `0.1.0a3`
-- crates.io is live as `0.1.0-alpha.3`
-- Go tag `packages/go/v0.1.0-alpha.3` is pushed, but anonymous module resolution still depends on repo visibility and auth
+- npm is live; the current `alpha` dist-tag is `0.1.0-alpha.4` while `latest` still points at `0.1.0-alpha.1`
+- PyPI is live as `0.1.0a4`
+- crates.io is live as `0.1.0-alpha.4`
+- Go tag `packages/go/v0.1.0-alpha.4` is pushed and publicly resolvable
 - Maven Central deploy is still blocked even after namespace verification, Central credentials, local signing, and public key upload; Sonatype currently fails the deployment because it cannot resolve the public key fingerprint `479D41DBDF301A4C66FA292A06A4E02A1FD498FB`
 - NuGet push is todo until a nuget.org account exists and a NuGet API key is configured

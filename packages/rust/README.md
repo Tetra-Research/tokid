@@ -11,7 +11,7 @@ Status: early alpha.
 Capability tier: `full`.
 Runtime target: current stable Rust.
 Registry readiness: `publish-now`.
-Registry status: live on crates.io as `0.1.0-alpha.3`.
+Registry status: live on crates.io as `0.1.0-alpha.4`.
 Crate name: `tokid` on crates.io.
 
 ## What You Get
@@ -34,7 +34,7 @@ The current alpha ships two built-in profiles:
 
 ```toml
 [dependencies]
-tokid = "0.1.0-alpha.3"
+tokid = "0.1.0-alpha.4"
 ```
 
 For local development against a checkout:

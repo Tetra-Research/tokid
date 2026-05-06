@@ -31,7 +31,7 @@ If you feed the envelope into prompts everywhere, you give back most of the toke
 
 Status: early alpha.
 Registry readiness: `publish-now`.
-Registry status: live on npm; current `alpha` dist-tag is `0.1.0-alpha.3`.
+Registry status: live on npm; current `alpha` dist-tag is `0.1.0-alpha.4`.
 Current runtime target: Node.js `20+`, ESM, server-side usage.
 Other first-party SDKs live in the main repo under `packages/python`, `packages/go`, `packages/rust`, `packages/java`, and `packages/dotnet`.
 
@@ -343,8 +343,8 @@ Maintainer release flow:
 
 ```bash
 npm run release:npm:dry-run
-git tag v0.1.0-alpha.3
-git push origin v0.1.0-alpha.3
+git tag v0.1.0-alpha.4
+git push origin v0.1.0-alpha.4
 ```
 
 `publish.yml` is the preferred live path. `npm run release:npm` remains as a manual fallback.

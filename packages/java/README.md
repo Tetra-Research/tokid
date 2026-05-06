@@ -45,7 +45,7 @@ After publish, the dependency will be:
   <dependency>
   <groupId>io.tetraresearch.tokid</groupId>
   <artifactId>tokid</artifactId>
-  <version>0.1.0-alpha.3</version>
+  <version>0.1.0-alpha.4</version>
 </dependency>
 ```
 

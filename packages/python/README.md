@@ -11,7 +11,7 @@ Status: early alpha.
 Capability tier: `core`.
 Runtime target: Python `3.11+`.
 Registry readiness: `publish-now`.
-Registry status: live on PyPI as `0.1.0a3`.
+Registry status: live on PyPI as `0.1.0a4`.
 Package name: `tokid` on PyPI.
 
 ## What You Get
