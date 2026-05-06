@@ -130,5 +130,5 @@ Current known blockers from this checkout:
 - PyPI is live as `0.1.0a3`
 - crates.io is live as `0.1.0-alpha.3`
 - Go tag `packages/go/v0.1.0-alpha.3` is pushed, but anonymous module resolution still depends on repo visibility and auth
-- Maven Central deploy is blocked locally until credentials and signing are configured
+- Maven Central deploy is blocked until the `io.tokid` namespace is verified in Central Portal, a `central` server token is configured in Maven `settings.xml`, and a GPG secret key is available for signing
 - NuGet push is blocked locally until a NuGet API key is configured
