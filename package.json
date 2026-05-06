@@ -1,16 +1,50 @@
 {
   "name": "tokid",
   "version": "0.0.1",
-  "private": true,
-  "description": "Token-native identifier experiments and tokenizer analysis",
+  "description": "Token-native IDs for LLM-facing systems",
   "type": "module",
-  "bin": {
-    "tokid": "./dist/index.js"
+  "types": "./dist/package/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/package/index.d.ts",
+      "default": "./dist/package/index.js"
+    },
+    "./advanced": {
+      "types": "./dist/package/advanced.d.ts",
+      "default": "./dist/package/advanced.js"
+    },
+    "./profiles": {
+      "types": "./dist/package/profiles/index.d.ts",
+      "default": "./dist/package/profiles/index.js"
+    }
   },
+  "bin": {
+    "tokid": "./dist/package/cli.js"
+  },
+  "files": [
+    "dist/package",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "analyze": "npm run build --silent && node dist/index.js analyze-samples",
-    "analyze:words": "npm run build --silent && node dist/index.js analyze-words data/demo-words.txt"
+    "build": "npm run build:package",
+    "build:profiles": "node tools/profile-compiler.mjs build",
+    "verify:profiles": "node tools/profile-compiler.mjs verify",
+    "build:package": "npm run build:profiles --silent && rm -rf dist/package && tsc -p tsconfig.package.json",
+    "build:dev": "npm run build:profiles --silent && rm -rf dist/dev && tsc -p tsconfig.json",
+    "test": "npm run build:dev --silent && node --test dist/dev/test/*.test.js",
+    "verify:pack": "npm run build:package --silent && node tools/verify-packlist.mjs",
+    "analyze": "npm run analyze:sanity-check",
+    "analyze:sanity-check": "npm run build:dev --silent && node dist/dev/study/sanity-check/index.js analyze-samples",
+    "analyze:words": "npm run analyze:words:sanity-check",
+    "analyze:words:sanity-check": "npm run build:dev --silent && node dist/dev/study/sanity-check/index.js analyze-words study/sanity-check/data/demo-words.txt",
+    "analyze:ids": "npm run build:dev --silent && node dist/dev/study/id-token-usage/index.js run",
+    "analyze:vocab": "npm run build:dev --silent && node dist/dev/study/tokenizer-vocabulary/index.js run",
+    "analyze:atoms": "npm run build:dev --silent && node dist/dev/study/token-atom-scoring/index.js run",
+    "analyze:external-vocab": "npm run build:dev --silent && node dist/dev/study/external-vocabulary/index.js run",
+    "analyze:wordfreq-atoms": "npm run build:dev --silent && node dist/dev/study/wordfreq-atom-ranking/index.js run",
+    "analyze:separators": "npm run build:dev --silent && node dist/dev/study/separator-effects/index.js run",
+    "analyze:transport": "npm run build:dev --silent && node dist/dev/study/transport-contexts/index.js run"
   },
   "keywords": [
     "tokenizer",
@@ -20,11 +54,21 @@
   ],
   "author": "Tyler O'Briant",
   "license": "ISC",
-  "dependencies": {
-    "tiktoken": "^1.0.16"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tetra-Research/tokid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tetra-Research/tokid/issues"
+  },
+  "homepage": "https://github.com/Tetra-Research/tokid#readme",
+  "engines": {
+    "node": ">=20"
   },
   "devDependencies": {
+    "@msgpack/msgpack": "^3.1.3",
     "@types/node": "^22.14.1",
+    "tiktoken": "^1.0.16",
     "typescript": "^5.8.3"
   }
 }

@@ -1,0 +1,124 @@
+{
+  "profileId": "openai-cross-underscore-v1",
+  "default": false,
+  "outputFile": "openai-cross-underscore-v1.generated.ts",
+  "profileVersion": 1,
+  "profileTag": "oa1u",
+  "name": "OpenAI Cross Underscore v1",
+  "description": "OpenAI-derived token-native profile compiled from shared single-token, pronounceable word atoms with underscore-separated transport decoding.",
+  "provider": "openai",
+  "vocabulary": {
+    "syntax": "^[a-z]+$"
+  },
+  "entropy": {
+    "recommendedLength": 8
+  },
+  "candidateSource": {
+    "path": "study/wordfreq-atom-ranking/results/scored_candidates.csv",
+    "wordColumn": "word",
+    "filters": [
+      {
+        "column": "shared_single_token",
+        "equals": "true",
+        "label": "shared_single_token == true"
+      },
+      {
+        "column": "pronounceable",
+        "equals": "true",
+        "label": "pronounceable == true"
+      },
+      {
+        "column": "rank",
+        "max": 8192,
+        "label": "rank <= 8192"
+      },
+      {
+        "column": "composite_score",
+        "min": 80,
+        "label": "composite_score >= 80"
+      },
+      {
+        "column": "char_length",
+        "min": 5,
+        "max": 8,
+        "label": "5 <= word.length <= 8"
+      }
+    ],
+    "sort": [
+      {
+        "column": "composite_score",
+        "type": "number",
+        "direction": "desc"
+      },
+      {
+        "column": "rank",
+        "type": "number",
+        "direction": "asc"
+      },
+      {
+        "column": "word",
+        "type": "string",
+        "direction": "asc"
+      }
+    ],
+    "sortLabel": "composite_score desc, rank asc, word asc sort",
+    "reduction": {
+      "type": "none",
+      "label": "no prefix-free reduction because transport payload is separator-decoded"
+    }
+  },
+  "transportEvidence": {
+    "path": "study/transport-contexts/results/transport_safe_winners.csv",
+    "expectedWinner": "none",
+    "expectedRunnerUp": "underscore"
+  },
+  "sourceLineage": {
+    "studies": [
+      "study/token-atom-scoring",
+      "study/wordfreq-atom-ranking",
+      "study/separator-effects",
+      "study/transport-contexts"
+    ],
+    "notes": [
+      "Prompt payload prefers literal spaces.",
+      "Transport payload uses underscore separation as the measured transport-safe runner-up."
+    ]
+  },
+  "codecs": [
+    {
+      "id": "prompt",
+      "kind": "payload",
+      "description": "Bare prompt payload with atoms joined by literal spaces.",
+      "separator": " ",
+      "normalization": "whitespace",
+      "transportSafe": false,
+      "decodability": {
+        "mode": "separator"
+      }
+    },
+    {
+      "id": "transport",
+      "kind": "payload",
+      "description": "Bare transport payload with underscore-separated atoms.",
+      "separator": "_",
+      "normalization": "literal",
+      "transportSafe": true,
+      "decodability": {
+        "mode": "separator"
+      }
+    },
+    {
+      "id": "envelope",
+      "kind": "envelope",
+      "description": "Durable transport envelope with explicit profile and checksum metadata.",
+      "payloadCodecId": "transport",
+      "prefix": "tk1",
+      "separator": "~",
+      "formatVersion": 1,
+      "checksum": {
+        "algorithm": "sha256-base36",
+        "length": 5
+      }
+    }
+  ]
+}
