@@ -21,6 +21,14 @@ transport: straightcourseshirtheightalterouterrapidverse
 envelope:  tk1_oa1_straightcourseshirtheightalterouterrapidverse_1oze8
 ```
 
+The important distinction is:
+
+- `prompt` is the cheapest LLM-facing form
+- `transport` is the machine-safe payload form
+- `envelope` is the durable wrapper around that payload
+
+If you feed the envelope into prompts everywhere, you give back most of the tokenizer win.
+
 Status: early alpha.
 Registry readiness: `publish-now`.
 Registry status: live on npm; current `alpha` dist-tag is `0.1.0-alpha.3`.
@@ -45,6 +53,15 @@ The motivating observation is simple:
 - UUID-like strings are expensive under the OpenAI tokenizers studied here
 - delimiter choice matters once IDs appear inside real transport contexts
 
+For the example above, measured locally:
+
+| form | chars | `cl100k_base` | `o200k_base` |
+|---|---:|---:|---:|
+| `prompt` | 52 | 8 | 8 |
+| `transport` | 45 | 12 | 10 |
+| `envelope` | 59 | 22 | 21 |
+| `uuid_v4` | 36 | 18 | 18 |
+
 In the current baseline measurements:
 
 - UUID v4 averages about `22.78` tokens in `cl100k_base`
@@ -53,6 +70,38 @@ In the current baseline measurements:
 - raw concatenation beats `_`, `-`, `.`, and `~` for transport-safe forms in the measured OpenAI contexts
 
 That is the niche `tokid` is built for.
+
+## How To Read A `tokid`
+
+`tokid` is one logical ID rendered three ways for three different jobs.
+
+### `prompt`
+
+This is the form to put in prompt text.
+
+- atoms stay separated by literal spaces
+- the built-in profiles are compiled from tokenizer-friendly single-token word atoms
+- in the measured OpenAI tokenizers, `8` prompt atoms are usually about `8` tokens
+
+### `transport`
+
+This is the form to use when structured text has to carry the payload.
+
+- spaces are cheap in prompts but expensive once they become `%20`, quoted strings, or escaped text
+- raw concatenation is the best measured transport-safe default in the current OpenAI studies
+- `_` is the fallback profile when visual separation matters more than the last bit of token efficiency
+
+At `8` atoms in the transport study, `url_path` averaged `30.86` tokens with spaces, `18.35` with raw concatenation, and `20.20` with underscores.
+
+### `envelope`
+
+This is the durable external ID.
+
+- it wraps the transport payload with a prefix and profile tag
+- it adds a checksum so truncation and mistypes fail validation
+- it is meant for storage, exchange, and later decoding
+
+The envelope is not where the compression happens. The payload is where the compression happens. The envelope is the wrapper that makes the payload usable as a real long-lived identifier.
 
 ## Install
 
@@ -84,7 +133,7 @@ const prompt = toPrompt(id);
 const transport = toTransport(id);
 ```
 
-The default `generate()` result is the durable envelope form. That is the form you should store, exchange, and pass across boundaries unless you have a strong reason not to.
+The default `generate()` result is the durable envelope form. That is the form you should store, exchange, and pass across boundaries unless you have a strong reason not to. When the ID is headed into prompt text, convert it to `prompt` or `transport` first.
 
 ## The Simple API
 
@@ -131,7 +180,7 @@ If you only remember one rule, use this one:
 
 - use `envelope` at persistence and network boundaries
 
-Bare prompt and transport payloads are useful, but they are not self-describing.
+Bare prompt and transport payloads are useful, but they are not self-describing. That is why the envelope exists even though it costs more tokens.
 
 ## Which Profile Should I Use?
 

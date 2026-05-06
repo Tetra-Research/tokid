@@ -9,17 +9,55 @@ It is not a universal replacement for `uuid`, `ulid`, `nanoid`, or `sqids`.
 
 ## What It Looks Like
 
-A `tokid` usually shows up as a durable envelope string like:
+One logical `tokid` can be rendered three ways:
 
 ```text
-tk1_oa1_straightcourseshirtheightalterouterrapidverse_1oze8
+prompt:    straight course shirt height alter outer rapid verse
+transport: straightcourseshirtheightalterouterrapidverse
+envelope:  tk1_oa1_straightcourseshirtheightalterouterrapidverse_1oze8
 ```
 
-That same logical ID can also be rendered as:
+The important distinction is:
 
-- prompt: `straight course shirt height alter outer rapid verse`
-- transport: `straightcourseshirtheightalterouterrapidverse`
-- envelope: `tk1_oa1_straightcourseshirtheightalterouterrapidverse_1oze8`
+- the token savings live in `prompt` first and `transport` second
+- the `envelope` is the durable wrapper around that cheaper payload
+- if you send the envelope straight through prompts all the time, you give back most of the win
+
+## Why It Looks Different
+
+`tokid` is not optimizing one string. It is optimizing one logical ID for three different jobs.
+
+### `prompt`
+
+This is the cheapest LLM-facing form.
+
+- atoms stay separated by literal spaces
+- the current profiles are built from tokenizer-friendly single-token word atoms
+- in the measured OpenAI tokenizers, `8` prompt atoms are usually about `8` tokens
+
+Use this when a human or model is reading the ID inside natural text.
+
+### `transport`
+
+This is the transport-safe payload form.
+
+- spaces are great in prompts, but they get escaped or quoted in URLs, query strings, JSON, and logs
+- once that happens, the raw prompt form stops being cheap
+- for the measured transport-safe contexts, raw concatenation beat `_`, `-`, `.`, and `~`
+
+At `8` atoms in the transport study, `url_path` averaged `30.86` tokens with spaces, `18.35` with raw concatenation, and `20.20` with underscores.
+
+Use this when the ID must survive structured text without carrying extra envelope metadata.
+
+### `envelope`
+
+This is the durable external form.
+
+- it wraps the transport payload with a format prefix
+- it carries a profile tag so the payload can be decoded later
+- it adds a checksum so truncation and mistypes fail validation
+
+The envelope is not the cheapest form. It exists so stored and exchanged IDs are self-describing enough to survive across process and release boundaries.
 
 ## Why
 
@@ -38,6 +76,31 @@ The motivating observation is simple:
 - character length and token cost are not the same thing
 - UUID-like strings are expensive under the tokenizers studied here
 - delimiter choice matters once IDs appear inside real transport contexts
+
+For the example above, measured locally against the current target tokenizers:
+
+| form | chars | `cl100k_base` | `o200k_base` |
+|---|---:|---:|---:|
+| `prompt` | 52 | 8 | 8 |
+| `transport` | 45 | 12 | 10 |
+| `envelope` | 59 | 22 | 21 |
+| `uuid_v4` | 36 | 18 | 18 |
+
+That is the real trade:
+
+- `prompt` is where the big tokenizer win lives
+- `transport` keeps much of that win while staying machine-safe
+- `envelope` pays a fixed metadata tax to become durable
+
+Against the current baseline families in `cl100k_base`, the study means are:
+
+- `uuid_v4`: `22.78`
+- `uuid_v7`: `21.54`
+- `ulid`: `16.45`
+- `nanoid_21`: `15.13`
+- `base64url_16`: `15.87`
+- `base62_16`: `15.96`
+- `decimal_u64`: `6.95`
 
 ## What Lives Here
 
@@ -120,6 +183,18 @@ Use `tokid` when most of these are true:
 - you are comfortable pinning an explicit profile in your application
 
 Do not use it when minimal byte length, ecosystem standardization, sortable IDs, browser-first runtime support, or authentication-grade secrets matter more than token behavior.
+
+## How To Think About It
+
+The shortest way to reason about `tokid` is:
+
+1. Pick a logical atom sequence.
+2. Render it as `prompt` when the model reads it.
+3. Render it as `transport` when structured text has to carry it cheaply.
+4. Store and exchange it as `envelope` when you need a durable contract.
+
+The payload is the optimization.
+The envelope is the wrapper that makes the payload usable as a real ID.
 
 ## Development
 
