@@ -12,7 +12,7 @@ Capability tier: `core`.
 Runtime target: Java `20+`.
 Registry readiness: `publish-now`.
 Registry status: Wave 3 target, not yet published.
-Coordinates: `io.tokid:tokid` on Maven Central.
+Coordinates: `io.tetraresearch.tokid:tokid` on Maven Central.
 
 ## What You Get
 
@@ -42,12 +42,14 @@ mvn install
 After publish, the dependency will be:
 
 ```xml
-<dependency>
-  <groupId>io.tokid</groupId>
+  <dependency>
+  <groupId>io.tetraresearch.tokid</groupId>
   <artifactId>tokid</artifactId>
   <version>0.1.0-alpha.3</version>
 </dependency>
 ```
+
+The Maven coordinates change independently from the Java package names, so imports remain under `io.tokid.*`.
 
 ## Quick Start
 

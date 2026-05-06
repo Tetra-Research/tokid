@@ -66,7 +66,7 @@ Current rollout state:
 | Python | PyPI `tokid` | 2 | `publish-now` | live on PyPI as `0.1.0a3` |
 | Go | `github.com/Tetra-Research/tokid/packages/go` | 2 | `publish-now` | tag pushed as `packages/go/v0.1.0-alpha.3`; anonymous `go get` still depends on repo visibility |
 | Rust | crates.io `tokid` | 2 | `publish-now` | live on crates.io as `0.1.0-alpha.3` |
-| Java / Kotlin | Maven Central `io.tokid:tokid` | 3 | `publish-now` | not yet published |
+| Java / Kotlin | Maven Central `io.tetraresearch.tokid:tokid` | 3 | `publish-now` | not yet published |
 | C# / .NET | NuGet `Tokid` | 3 | `publish-now` | not yet published |
 
 ## Publish Commands
@@ -130,5 +130,5 @@ Current known blockers from this checkout:
 - PyPI is live as `0.1.0a3`
 - crates.io is live as `0.1.0-alpha.3`
 - Go tag `packages/go/v0.1.0-alpha.3` is pushed, but anonymous module resolution still depends on repo visibility and auth
-- Maven Central deploy is blocked until the `io.tokid` namespace is verified in Central Portal, a `central` server token is configured in Maven `settings.xml`, and a GPG secret key is available for signing
+- Maven Central deploy is blocked until the `io.tetraresearch.tokid` namespace is verified in Central Portal against `tokid.tetraresearch.io`, a `central` server token is configured in Maven `settings.xml`, and a GPG secret key is available for signing
 - NuGet push is blocked locally until a NuGet API key is configured
