@@ -21,6 +21,9 @@
 - [x] 4.1 Add Maven Central-required package metadata, artifact generation, and documented deploy steps for the JVM SDK
 - [x] 4.2 Add NuGet-required package metadata and a repeatable pack/push workflow for the .NET SDK
 - [ ] 4.3 Reclassify the JVM and .NET SDKs from `publish-after-hardening` to live only after their registry-specific release checks pass
+  Current todo:
+  Maven Central is still blocked because Sonatype is not resolving public key fingerprint `479D41DBDF301A4C66FA292A06A4E02A1FD498FB` during deployment validation.
+  NuGet is still blocked because there is no nuget.org account/API key configured yet.
 
 ## 5. Post-Release Status
 

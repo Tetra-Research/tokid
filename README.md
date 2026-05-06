@@ -7,6 +7,20 @@ Token-native IDs for LLM-facing systems.
 It is not a shorter UUID.
 It is not a universal replacement for `uuid`, `ulid`, `nanoid`, or `sqids`.
 
+## What It Looks Like
+
+A `tokid` usually shows up as a durable envelope string like:
+
+```text
+tk1_oa1_straightcourseshirtheightalterouterrapidverse_1oze8
+```
+
+That same logical ID can also be rendered as:
+
+- prompt: `straight course shirt height alter outer rapid verse`
+- transport: `straightcourseshirtheightalterouterrapidverse`
+- envelope: `tk1_oa1_straightcourseshirtheightalterouterrapidverse_1oze8`
+
 ## Why
 
 Most ID libraries optimize for one of these goals:
@@ -46,8 +60,8 @@ Current official first-party SDKs:
 | Python | `packages/python` | PyPI `tokid` | `core` | 2 | `publish-now` | live on PyPI as `0.1.0a3` |
 | Go | `packages/go` | `github.com/Tetra-Research/tokid/packages/go` | `core` | 2 | `publish-now` | tag pushed as `packages/go/v0.1.0-alpha.3`; anonymous `go get` still depends on repo visibility |
 | Rust | `packages/rust` | crates.io `tokid` | `full` | 2 | `publish-now` | live on crates.io as `0.1.0-alpha.3` |
-| Java / Kotlin | `packages/java` | Maven Central `io.tetraresearch.tokid:tokid` | `core` | 3 | `publish-now` | not yet published |
-| C# | `packages/dotnet` | NuGet `Tokid` | `core` | 3 | `publish-now` | not yet published |
+| Java / Kotlin | `packages/java` | Maven Central `io.tetraresearch.tokid:tokid` | `core` | 3 | `publish-now` | todo: Sonatype still is not resolving the public signing key for first publish |
+| C# | `packages/dotnet` | NuGet `Tokid` | `core` | 3 | `publish-now` | todo: publish after a nuget.org account and API key exist |
 
 All first-party SDKs currently ship the same two built-in profiles:
 

@@ -11,7 +11,7 @@ Status: early alpha.
 Capability tier: `core`.
 Runtime target: Java `20+`.
 Registry readiness: `publish-now`.
-Registry status: Wave 3 target, not yet published.
+Registry status: TODO. First Maven Central publish is still blocked because Sonatype is not resolving the public signing key yet.
 Coordinates: `io.tetraresearch.tokid:tokid` on Maven Central.
 
 ## What You Get

@@ -11,7 +11,7 @@ Status: early alpha.
 Capability tier: `core`.
 Runtime target: .NET `8+`.
 Registry readiness: `publish-now`.
-Registry status: Wave 3 target, not yet published.
+Registry status: TODO. Publish after a nuget.org account exists and a NuGet API key is configured.
 Package name: `Tokid` on NuGet.
 
 ## What You Get

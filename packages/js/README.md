@@ -13,6 +13,14 @@ It is a different trade:
 - fewer tokens in the tokenizer families this project currently targets
 - one logical ID with three useful renderings: prompt, transport, and durable envelope
 
+What that looks like in practice:
+
+```text
+prompt:    straight course shirt height alter outer rapid verse
+transport: straightcourseshirtheightalterouterrapidverse
+envelope:  tk1_oa1_straightcourseshirtheightalterouterrapidverse_1oze8
+```
+
 Status: early alpha.
 Registry readiness: `publish-now`.
 Registry status: live on npm; current `alpha` dist-tag is `0.1.0-alpha.3`.
