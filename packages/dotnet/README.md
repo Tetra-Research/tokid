@@ -10,7 +10,9 @@ It is not a universal replacement for `Guid`, `Ulid`, `NanoId`, or `Sqids`.
 Status: early alpha.
 Capability tier: `core`.
 Runtime target: .NET `8+`.
-Planned package name: `Tokid` on NuGet.
+Registry readiness: `publish-now`.
+Registry status: Wave 3 target, not yet published.
+Package name: `Tokid` on NuGet.
 
 ## What You Get
 
@@ -121,3 +123,17 @@ Choose something else when minimal byte length, ecosystem standardization, sorta
 - namespace: `Tokid`
 - the current built-in profiles are OpenAI-derived
 - this SDK intentionally documents the `core` surface first
+
+## Maintainer Release
+
+Dry-run:
+
+```bash
+npm run release:nuget:dry-run
+```
+
+Official publish:
+
+```bash
+npm run release:nuget
+```

@@ -102,7 +102,7 @@ pub struct TokidProfileManifest {
 #[derive(Debug, Clone, Deserialize)]
 struct PortableRegistryEntry {
     #[serde(rename = "profileId")]
-    profile_id: String,
+    _profile_id: String,
     manifest: String,
 }
 

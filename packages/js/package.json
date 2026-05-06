@@ -19,7 +19,7 @@
     }
   },
   "bin": {
-    "tokid": "./dist/cli.js"
+    "tokid": "dist/cli.js"
   },
   "files": [
     "dist",
@@ -44,6 +44,7 @@
   },
   "homepage": "https://github.com/Tetra-Research/tokid/tree/main/packages/js#readme",
   "publishConfig": {
+    "access": "public",
     "tag": "alpha"
   },
   "engines": {

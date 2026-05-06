@@ -10,7 +10,9 @@ It is not a universal replacement for `uuid`, `ulid`, `nanoid`, or `sqids`.
 Status: early alpha.
 Capability tier: `core`.
 Runtime target: Java `20+`.
-Planned coordinates: `io.tokid:tokid` on Maven Central.
+Registry readiness: `publish-now`.
+Registry status: Wave 3 target, not yet published.
+Coordinates: `io.tokid:tokid` on Maven Central.
 
 ## What You Get
 
@@ -128,3 +130,19 @@ Choose something else when minimal byte length, ecosystem standardization, sorta
 - Kotlin should use the same surface through the Java classes
 - the current built-in profiles are OpenAI-derived
 - this SDK intentionally documents the `core` surface first
+
+## Maintainer Release
+
+Dry-run:
+
+```bash
+npm run release:maven:dry-run
+```
+
+Official deploy:
+
+```bash
+npm run release:maven
+```
+
+The live deploy path assumes Maven Central credentials and a usable GPG signing setup.

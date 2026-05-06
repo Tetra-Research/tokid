@@ -40,14 +40,19 @@ The runtime contract is driven by the portable manifests and the shared conforma
 
 Current official first-party SDKs:
 
-| SDK | Path | Package channel | Capability tier | Published profiles |
-|---|---|---|---|---|
-| JavaScript / TypeScript | `packages/js` | npm `tokid` | `full` | `openai-cross-v1`, `openai-cross-underscore-v1` |
-| Python | `packages/python` | PyPI `tokid` | `core` | `openai-cross-v1`, `openai-cross-underscore-v1` |
-| Go | `packages/go` | Go module `github.com/Tetra-Research/tokid/packages/go` | `core` | `openai-cross-v1`, `openai-cross-underscore-v1` |
-| Rust | `packages/rust` | crates.io `tokid` | `full` | `openai-cross-v1`, `openai-cross-underscore-v1` |
-| Java / Kotlin | `packages/java` | Maven Central `io.tokid:tokid` | `core` | `openai-cross-v1`, `openai-cross-underscore-v1` |
-| C# | `packages/dotnet` | NuGet `Tokid` | `core` | `openai-cross-v1`, `openai-cross-underscore-v1` |
+| SDK | Path | Channel | Tier | Wave | Readiness | Registry status |
+|---|---|---|---|---|---|---|
+| JavaScript / TypeScript | `packages/js` | npm `tokid` | `full` | 1 | `publish-now` | live on npm as `0.1.0-alpha.1` |
+| Python | `packages/python` | PyPI `tokid` | `core` | 2 | `publish-now` | not yet published |
+| Go | `packages/go` | `github.com/Tetra-Research/tokid/packages/go` | `core` | 2 | `publish-now` | not yet tagged |
+| Rust | `packages/rust` | crates.io `tokid` | `full` | 2 | `publish-now` | not yet published |
+| Java / Kotlin | `packages/java` | Maven Central `io.tokid:tokid` | `core` | 3 | `publish-now` | not yet published |
+| C# | `packages/dotnet` | NuGet `Tokid` | `core` | 3 | `publish-now` | not yet published |
+
+All first-party SDKs currently ship the same two built-in profiles:
+
+- `openai-cross-v1`
+- `openai-cross-underscore-v1`
 
 Capability tiers:
 
@@ -59,6 +64,8 @@ For the JVM and .NET releases specifically:
 - Java / Kotlin is currently `core` and ships the two OpenAI-derived profiles only
 - C# is currently `core` and ships the same two profiles only
 - neither SDK is claiming advanced custom-kernel or custom-profile-loading parity yet
+
+Maintainer release policy, readiness notes, version mapping, and publish commands live in [RELEASING.md](RELEASING.md).
 
 ## Current Profiles
 
@@ -111,6 +118,17 @@ npm run conformance
 npm run verify:profiles
 npm run verify:pack
 npm run smoke:pack
+```
+
+Release dry-runs:
+
+```bash
+npm run release:npm:dry-run
+npm run release:pypi:dry-run
+npm run release:go:dry-run
+npm run release:rust:dry-run
+npm run release:maven:dry-run
+npm run release:nuget:dry-run
 ```
 
 Study commands still live at the repo root:

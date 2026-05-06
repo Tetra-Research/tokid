@@ -10,7 +10,9 @@ It is not a universal replacement for `uuid`, `ulid`, `nanoid`, or `sqids`.
 Status: early alpha.
 Capability tier: `core`.
 Runtime target: Python `3.11+`.
-Planned package name: `tokid` on PyPI.
+Registry readiness: `publish-now`.
+Registry status: Wave 2 target, not yet published.
+Package name: `tokid` on PyPI.
 
 ## What You Get
 
@@ -136,3 +138,17 @@ Choose something else when minimal byte length, ecosystem standardization, sorta
 - Python `3.11+`
 - the current built-in profiles are OpenAI-derived
 - this SDK intentionally documents the `core` surface first even though lower-level runtime types exist
+
+## Maintainer Release
+
+Dry-run:
+
+```bash
+npm run release:pypi:dry-run
+```
+
+Official upload:
+
+```bash
+npm run release:pypi
+```

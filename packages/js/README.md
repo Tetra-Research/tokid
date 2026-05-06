@@ -14,6 +14,8 @@ It is a different trade:
 - one logical ID with three useful renderings: prompt, transport, and durable envelope
 
 Status: early alpha.
+Registry readiness: `publish-now`.
+Registry status: live on npm as `0.1.0-alpha.1`.
 Current runtime target: Node.js `20+`, ESM, server-side usage.
 Other first-party SDKs live in the main repo under `packages/python`, `packages/go`, `packages/rust`, `packages/java`, and `packages/dotnet`.
 
@@ -48,6 +50,12 @@ That is the niche `tokid` is built for.
 
 ```bash
 npm install tokid
+```
+
+For local development against a checkout:
+
+```bash
+npm install ./packages/js
 ```
 
 ## Quick Start
@@ -277,10 +285,12 @@ npm run release:check
 Maintainer release flow:
 
 ```bash
-npm run release:check
-git tag v0.1.0-alpha.1
-git push origin v0.1.0-alpha.1
+npm run release:npm:dry-run
+git tag v0.1.0-alpha.2
+git push origin v0.1.0-alpha.2
 ```
+
+`publish.yml` is the preferred live path. `npm run release:npm` remains as a manual fallback.
 
 Research and benchmarking commands remain in the repo as well:
 

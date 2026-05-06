@@ -11,6 +11,8 @@ Status: early alpha.
 Capability tier: `core`.
 Runtime target: Go `1.22+`.
 Module path: `github.com/Tetra-Research/tokid/packages/go`.
+Registry readiness: `publish-now`.
+Registry status: Wave 2 target, not yet tagged.
 
 ## What You Get
 
@@ -101,6 +103,12 @@ profile := factory.Profile()
 
 After tagged public releases begin, you will be able to depend on the module directly by version.
 
+The first planned public tag is:
+
+```bash
+go get github.com/Tetra-Research/tokid/packages/go@v0.1.0-alpha.1
+```
+
 ## Prompt, Transport, Envelope
 
 Every tokid has one logical identity and three useful renderings:
@@ -147,3 +155,17 @@ Choose something else when minimal byte length, ecosystem standardization, sorta
 - Go `1.22+`
 - the current built-in profiles are OpenAI-derived
 - this SDK intentionally documents the `core` surface first even though profile manifests are also available
+
+## Maintainer Release
+
+Dry-run:
+
+```bash
+npm run release:go:dry-run
+```
+
+Official tag:
+
+```bash
+npm run release:go -- --push
+```

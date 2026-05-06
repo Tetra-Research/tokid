@@ -10,7 +10,9 @@ It is not a universal replacement for `uuid`, `ulid`, `nanoid`, or `sqids`.
 Status: early alpha.
 Capability tier: `full`.
 Runtime target: current stable Rust.
-Planned crate name: `tokid` on crates.io.
+Registry readiness: `publish-now`.
+Registry status: Wave 2 target, not yet published.
+Crate name: `tokid` on crates.io.
 
 ## What You Get
 
@@ -145,3 +147,17 @@ Choose something else when minimal byte length, ecosystem standardization, sorta
 - current stable Rust
 - the current built-in profiles are OpenAI-derived
 - the crate ships the same portable profile contract as the other first-party SDKs
+
+## Maintainer Release
+
+Dry-run:
+
+```bash
+npm run release:rust:dry-run
+```
+
+Official publish:
+
+```bash
+npm run release:rust
+```

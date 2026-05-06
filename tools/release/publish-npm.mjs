@@ -1,7 +1,20 @@
 import path from "node:path";
 
-import { repoRoot, run } from "./_common.mjs";
+import { ensureCleanGit, parseReleaseArgs, repoRoot, run, runReleaseGate } from "./_common.mjs";
 
-run("npm", ["publish", "--provenance", "--access", "public"], {
+const { dryRun, skipCheck } = parseReleaseArgs();
+
+if (!dryRun) {
+  ensureCleanGit();
+}
+
+runReleaseGate({ skipCheck });
+
+const args = ["publish", "--access", "public", "--tag", "alpha"];
+if (dryRun) {
+  args.push("--dry-run");
+}
+
+run("npm", args, {
   cwd: path.join(repoRoot, "packages", "js"),
 });

@@ -1,12 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <PackageId>Tokid</PackageId>
+    <Version>0.1.0-alpha.1</Version>
+    <Authors>Tyler O'Briant</Authors>
+    <Description>Token-native IDs for LLM-facing systems</Description>
+    <PackageProjectUrl>https://github.com/Tetra-Research/tokid/tree/main/packages/dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Tetra-Research/tokid</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>tokenizer;identifiers;llm;tokid</PackageTags>
+    <PackageLicenseExpression>ISC</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="/" Link="README.md" />
     <None Include="Generated\**\*.json" Pack="true" PackagePath="contentFiles/any/any/Generated/" />
   </ItemGroup>
 </Project>

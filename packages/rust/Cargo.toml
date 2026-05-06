@@ -4,6 +4,13 @@ version = "0.1.0-alpha.1"
 edition = "2021"
 description = "Token-native IDs for LLM-facing systems"
 license = "ISC"
+readme = "README.md"
+repository = "https://github.com/Tetra-Research/tokid"
+homepage = "https://github.com/Tetra-Research/tokid/tree/main/packages/rust#readme"
+documentation = "https://github.com/Tetra-Research/tokid/tree/main/packages/rust#readme"
+keywords = ["tokenizer", "identifiers", "llm", "tokid"]
+categories = ["encoding", "parser-implementations", "text-processing"]
+include = ["src/**/*.rs", "generated/**/*.json", "Cargo.toml", "README.md"]
 
 [dependencies]
 hex = "0.4"

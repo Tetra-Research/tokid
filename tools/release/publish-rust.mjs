@@ -1,7 +1,15 @@
 import path from "node:path";
 
-import { repoRoot, run } from "./_common.mjs";
+import { ensureCleanGit, parseReleaseArgs, repoRoot, run, runReleaseGate } from "./_common.mjs";
 
-run("cargo", ["publish"], {
+const { dryRun, skipCheck } = parseReleaseArgs();
+
+if (!dryRun) {
+  ensureCleanGit();
+}
+
+runReleaseGate({ skipCheck });
+
+run("cargo", dryRun ? ["publish", "--dry-run"] : ["publish"], {
   cwd: path.join(repoRoot, "packages", "rust"),
 });
