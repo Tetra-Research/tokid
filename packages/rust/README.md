@@ -11,7 +11,7 @@ Status: early alpha.
 Capability tier: `full`.
 Runtime target: current stable Rust.
 Registry readiness: `publish-now`.
-Registry status: Wave 2 target, not yet published.
+Registry status: live on crates.io as `0.1.0-alpha.3`.
 Crate name: `tokid` on crates.io.
 
 ## What You Get
@@ -32,18 +32,16 @@ The current alpha ships two built-in profiles:
 
 ## Install
 
-Until the first crates.io release is published, use a path dependency from a local checkout:
+```toml
+[dependencies]
+tokid = "0.1.0-alpha.3"
+```
+
+For local development against a checkout:
 
 ```toml
 [dependencies]
 tokid = { path = "../tokid/packages/rust" }
-```
-
-After publish, the dependency will be:
-
-```toml
-[dependencies]
-tokid = "0.1.0-alpha.3"
 ```
 
 ## Quick Start
