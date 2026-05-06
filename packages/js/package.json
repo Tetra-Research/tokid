@@ -1,0 +1,52 @@
+{
+  "name": "tokid",
+  "version": "0.1.0-alpha.1",
+  "description": "Token-native IDs for LLM-facing systems",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./advanced": {
+      "types": "./dist/advanced.d.ts",
+      "default": "./dist/advanced.js"
+    },
+    "./profiles": {
+      "types": "./dist/profiles/index.d.ts",
+      "default": "./dist/profiles/index.js"
+    }
+  },
+  "bin": {
+    "tokid": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "tokenizer",
+    "identifiers",
+    "llm",
+    "tiktoken"
+  ],
+  "author": "Tyler O'Briant",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tetra-Research/tokid.git",
+    "directory": "packages/js"
+  },
+  "bugs": {
+    "url": "https://github.com/Tetra-Research/tokid/issues"
+  },
+  "homepage": "https://github.com/Tetra-Research/tokid/tree/main/packages/js#readme",
+  "publishConfig": {
+    "tag": "alpha"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "defaultProfileId": "openai-cross-v1",
+  "profiles": [
+    {
+      "profileId": "openai-cross-v1",
+      "profileTag": "oa1",
+      "profileVersion": 1,
+      "manifest": "profiles/openai-cross-v1.json",
+      "default": true
+    },
+    {
+      "profileId": "openai-cross-underscore-v1",
+      "profileTag": "oa1u",
+      "profileVersion": 1,
+      "manifest": "profiles/openai-cross-underscore-v1.json",
+      "default": false
+    }
+  ]
+}

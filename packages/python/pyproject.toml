@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tokid"
+version = "0.1.0a1"
+description = "Token-native IDs for LLM-facing systems"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "ISC" }
+authors = [
+  { name = "Tyler O'Briant" }
+]
+keywords = ["tokenizer", "identifiers", "llm", "tokid"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "License :: OSI Approved :: ISC License (ISCL)"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+tokid = ["generated/*.json", "generated/profiles/*.json"]

@@ -1,42 +1,27 @@
 {
-  "name": "tokid",
-  "version": "0.1.0-alpha.1",
-  "description": "Token-native IDs for LLM-facing systems",
+  "name": "tokid-workspace",
+  "private": true,
   "type": "module",
-  "types": "./dist/package/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/package/index.d.ts",
-      "default": "./dist/package/index.js"
-    },
-    "./advanced": {
-      "types": "./dist/package/advanced.d.ts",
-      "default": "./dist/package/advanced.js"
-    },
-    "./profiles": {
-      "types": "./dist/package/profiles/index.d.ts",
-      "default": "./dist/package/profiles/index.js"
-    }
-  },
-  "bin": {
-    "tokid": "./dist/package/cli.js"
-  },
-  "files": [
-    "dist/package",
-    "README.md",
-    "LICENSE"
+  "workspaces": [
+    "packages/js"
   ],
   "scripts": {
     "build": "npm run build:package",
     "build:profiles": "node tools/profile-compiler.mjs build",
     "verify:profiles": "node tools/profile-compiler.mjs verify",
-    "build:package": "npm run build:profiles --silent && rm -rf dist/package && tsc -p tsconfig.package.json",
+    "build:package": "npm run build:profiles --silent && rm -rf packages/js/dist && tsc -p packages/js/tsconfig.json",
     "build:dev": "npm run build:profiles --silent && rm -rf dist/dev && tsc -p tsconfig.json",
-    "test": "npm run build:dev --silent && node --test dist/dev/test/*.test.js",
+    "test": "npm run build:dev --silent && node --test dist/dev/packages/js/test/*.test.js",
+    "conformance": "npm run build:package --silent && node tools/run-conformance.mjs",
     "verify:pack": "npm run build:package --silent && node tools/verify-packlist.mjs",
     "smoke:pack": "node tools/smoke-pack.mjs",
-    "release:check": "npm run verify:profiles --silent && npm test && npm run verify:pack && npm run smoke:pack",
-    "prepublishOnly": "npm run release:check",
+    "release:check": "npm run verify:profiles --silent && npm test && npm run conformance && npm run verify:pack && npm run smoke:pack",
+    "release:npm": "node tools/release/publish-npm.mjs",
+    "release:pypi": "node tools/release/publish-pypi.mjs",
+    "release:go": "node tools/release/publish-go.mjs",
+    "release:rust": "node tools/release/publish-rust.mjs",
+    "release:maven": "node tools/release/publish-maven.mjs",
+    "release:nuget": "node tools/release/publish-nuget.mjs",
     "analyze": "npm run analyze:sanity-check",
     "analyze:sanity-check": "npm run build:dev --silent && node dist/dev/study/sanity-check/index.js analyze-samples",
     "analyze:words": "npm run analyze:words:sanity-check",
@@ -48,28 +33,6 @@
     "analyze:wordfreq-atoms": "npm run build:dev --silent && node dist/dev/study/wordfreq-atom-ranking/index.js run",
     "analyze:separators": "npm run build:dev --silent && node dist/dev/study/separator-effects/index.js run",
     "analyze:transport": "npm run build:dev --silent && node dist/dev/study/transport-contexts/index.js run"
-  },
-  "keywords": [
-    "tokenizer",
-    "identifiers",
-    "llm",
-    "tiktoken"
-  ],
-  "author": "Tyler O'Briant",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Tetra-Research/tokid.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Tetra-Research/tokid/issues"
-  },
-  "homepage": "https://github.com/Tetra-Research/tokid#readme",
-  "publishConfig": {
-    "tag": "alpha"
-  },
-  "engines": {
-    "node": ">=20"
   },
   "devDependencies": {
     "@msgpack/msgpack": "^3.1.3",

@@ -12,8 +12,8 @@
     "declaration": true
   },
   "include": [
-    "src/**/*.ts",
-    "test/**/*.ts",
+    "packages/js/src/**/*.ts",
+    "packages/js/test/**/*.ts",
     "study/**/*.ts"
   ]
 }

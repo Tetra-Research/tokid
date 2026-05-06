@@ -37,7 +37,7 @@ jobs:
 
       - name: Ensure git tag matches package version
         run: |
-          PACKAGE_VERSION=$(npm pkg get version | tr -d '"')
+          PACKAGE_VERSION=$(node -p "require('./packages/js/package.json').version")
           TAG_VERSION="${GITHUB_REF_NAME#v}"
           test "$PACKAGE_VERSION" = "$TAG_VERSION"
 
@@ -45,3 +45,4 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --provenance --access public
+        working-directory: packages/js

@@ -1,4 +1,10 @@
 node_modules
 dist
 .npm-cache
+.tooling
+packages/js/dist
+packages/java/out
+packages/rust/target
+packages/dotnet/**/bin
+packages/dotnet/**/obj
 study/**/results

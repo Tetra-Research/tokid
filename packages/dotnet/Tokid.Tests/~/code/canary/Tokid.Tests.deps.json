@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Tokid.Tests/1.0.0": {
+        "dependencies": {
+          "Tokid": "1.0.0"
+        },
+        "runtime": {
+          "Tokid.Tests.dll": {}
+        }
+      },
+      "Tokid/1.0.0": {
+        "runtime": {
+          "Tokid.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Tokid.Tests/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Tokid/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -4,23 +4,24 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
+const packageRoot = path.join(repoRoot, "packages", "js");
 
 const requiredPaths = [
   "package.json",
   "README.md",
   "LICENSE",
-  "dist/package/index.js",
-  "dist/package/index.d.ts",
-  "dist/package/cli.js",
-  "dist/package/cli.d.ts",
-  "dist/package/kernel.js",
-  "dist/package/kernel.d.ts",
-  "dist/package/types.js",
-  "dist/package/types.d.ts",
-  "dist/package/profiles/index.js",
-  "dist/package/profiles/index.d.ts",
-  "dist/package/profiles/generated-registry.js",
-  "dist/package/profiles/generated-registry.d.ts",
+  "dist/index.js",
+  "dist/index.d.ts",
+  "dist/cli.js",
+  "dist/cli.d.ts",
+  "dist/kernel.js",
+  "dist/kernel.d.ts",
+  "dist/types.js",
+  "dist/types.d.ts",
+  "dist/profiles/index.js",
+  "dist/profiles/index.d.ts",
+  "dist/profiles/generated-registry.js",
+  "dist/profiles/generated-registry.d.ts",
 ];
 
 const disallowedPrefixes = [
@@ -31,20 +32,18 @@ const disallowedPrefixes = [
   "study/",
   "test/",
   "dist/dev/",
-  "dist/index",
-  "dist/sanity-check",
 ];
 
 const allowedPatterns = [
   /^package\.json$/,
   /^README\.md$/,
   /^LICENSE$/,
-  /^dist\/package\/.+\.(js|d\.ts)$/,
+  /^dist\/.+\.(js|d\.ts)$/,
 ];
 
 function main() {
   const result = spawnSync("npm", ["pack", "--json", "--dry-run"], {
-    cwd: repoRoot,
+    cwd: packageRoot,
     encoding: "utf8",
   });
 

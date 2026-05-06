@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "registry": {
+    "schemaVersion": 1,
+    "defaultProfileId": "openai-cross-v1",
+    "profiles": [
+      {
+        "profileId": "openai-cross-v1",
+        "profileTag": "oa1",
+        "profileVersion": 1,
+        "manifest": "profiles/openai-cross-v1.json",
+        "default": true
+      },
+      {
+        "profileId": "openai-cross-underscore-v1",
+        "profileTag": "oa1u",
+        "profileVersion": 1,
+        "manifest": "profiles/openai-cross-underscore-v1.json",
+        "default": false
+      }
+    ]
+  },
+  "validProfiles": [
+    {
+      "profileId": "openai-cross-v1",
+      "profileTag": "oa1",
+      "profileVersion": 1,
+      "codecs": [
+        "prompt",
+        "transport",
+        "envelope"
+      ]
+    },
+    {
+      "profileId": "openai-cross-underscore-v1",
+      "profileTag": "oa1u",
+      "profileVersion": 1,
+      "codecs": [
+        "prompt",
+        "transport",
+        "envelope"
+      ]
+    }
+  ],
+  "invalidProfiles": [
+    {
+      "id": "duplicate-atom-profile",
+      "errorContains": "Duplicate atom",
+      "manifest": {
+        "profileId": "invalid-duplicate-v1",
+        "profileVersion": 1,
+        "profileTag": "dup1",
+        "name": "OpenAI Cross v1",
+        "description": "OpenAI-derived token-native profile compiled from shared single-token, pronounceable word atoms with prefix-free transport decoding.",
+        "provider": "openai",
+        "vocabulary": {
+          "syntax": "^[a-z]+$",
+          "atoms": [
+            "alpha",
+            "alpha"
+          ]
+        },
+        "codecs": [
+          {
+            "id": "prompt",
+            "kind": "payload",
+            "description": "Bare prompt payload with atoms joined by literal spaces.",
+            "separator": " ",
+            "normalization": "whitespace",
+            "transportSafe": false,
+            "decodability": {
+              "mode": "separator"
+            }
+          },
+          {
+            "id": "transport",
+            "kind": "payload",
+            "description": "Bare transport payload using delimiterless atom concatenation.",
+            "separator": "",
+            "normalization": "literal",
+            "transportSafe": true,
+            "decodability": {
+              "mode": "prefix-free"
+            }
+          },
+          {
+            "id": "envelope",
+            "kind": "envelope",
+            "description": "Durable transport envelope with explicit profile and checksum metadata.",
+            "payloadCodecId": "transport",
+            "prefix": "tk1",
+            "separator": "_",
+            "formatVersion": 1,
+            "checksum": {
+              "algorithm": "sha256-base36",
+              "length": 5
+            }
+          }
+        ],
+        "entropy": {
+          "atomCount": 2,
+          "bitsPerAtom": 1,
+          "recommendedLength": 8,
+          "bitsAtRecommendedLength": 8
+        },
+        "sourceLineage": {
+          "recipe": "profiles/recipes/openai-cross-v1.json",
+          "studies": [
+            "study/token-atom-scoring",
+            "study/wordfreq-atom-ranking",
+            "study/separator-effects",
+            "study/transport-contexts"
+          ],
+          "artifacts": [
+            {
+              "path": "study/wordfreq-atom-ranking/results/scored_candidates.csv",
+              "sha256": "a8c1224427c2a15298fa3034c8d9a70d156b269338e04494b014122bf38d89d7"
+            },
+            {
+              "path": "study/transport-contexts/results/transport_safe_winners.csv",
+              "sha256": "43ef0ce23cc74ab7b98bd67ec2dbe2772190aa01a67e29636710eb3ade76199d"
+            }
+          ],
+          "filters": [
+            "shared_single_token == true",
+            "pronounceable == true",
+            "rank <= 8192",
+            "composite_score >= 80",
+            "5 <= word.length <= 8",
+            "composite_score desc, rank asc, word asc sort",
+            "greedy prefix-free reduction for delimiterless transport decodability"
+          ],
+          "notes": [
+            "Prompt payload prefers literal spaces.",
+            "Transport payload prefers delimiterless concatenation for OpenAI tokenizers."
+          ]
+        }
+      }
+    },
+    {
+      "id": "prefix-ambiguous-profile",
+      "errorContains": "prefix-free",
+      "manifest": {
+        "profileId": "invalid-prefix-v1",
+        "profileVersion": 1,
+        "profileTag": "pfx1",
+        "name": "OpenAI Cross v1",
+        "description": "OpenAI-derived token-native profile compiled from shared single-token, pronounceable word atoms with prefix-free transport decoding.",
+        "provider": "openai",
+        "vocabulary": {
+          "syntax": "^[a-z]+$",
+          "atoms": [
+            "alpha",
+            "alphabet"
+          ]
+        },
+        "codecs": [
+          {
+            "id": "prompt",
+            "kind": "payload",
+            "description": "Bare prompt payload with atoms joined by literal spaces.",
+            "separator": " ",
+            "normalization": "whitespace",
+            "transportSafe": false,
+            "decodability": {
+              "mode": "separator"
+            }
+          },
+          {
+            "id": "transport",
+            "kind": "payload",
+            "description": "Bare transport payload using delimiterless atom concatenation.",
+            "separator": "",
+            "normalization": "literal",
+            "transportSafe": true,
+            "decodability": {
+              "mode": "prefix-free"
+            }
+          },
+          {
+            "id": "envelope",
+            "kind": "envelope",
+            "description": "Durable transport envelope with explicit profile and checksum metadata.",
+            "payloadCodecId": "transport",
+            "prefix": "tk1",
+            "separator": "_",
+            "formatVersion": 1,
+            "checksum": {
+              "algorithm": "sha256-base36",
+              "length": 5
+            }
+          }
+        ],
+        "entropy": {
+          "atomCount": 2,
+          "bitsPerAtom": 1,
+          "recommendedLength": 8,
+          "bitsAtRecommendedLength": 8
+        },
+        "sourceLineage": {
+          "recipe": "profiles/recipes/openai-cross-v1.json",
+          "studies": [
+            "study/token-atom-scoring",
+            "study/wordfreq-atom-ranking",
+            "study/separator-effects",
+            "study/transport-contexts"
+          ],
+          "artifacts": [
+            {
+              "path": "study/wordfreq-atom-ranking/results/scored_candidates.csv",
+              "sha256": "a8c1224427c2a15298fa3034c8d9a70d156b269338e04494b014122bf38d89d7"
+            },
+            {
+              "path": "study/transport-contexts/results/transport_safe_winners.csv",
+              "sha256": "43ef0ce23cc74ab7b98bd67ec2dbe2772190aa01a67e29636710eb3ade76199d"
+            }
+          ],
+          "filters": [
+            "shared_single_token == true",
+            "pronounceable == true",
+            "rank <= 8192",
+            "composite_score >= 80",
+            "5 <= word.length <= 8",
+            "composite_score desc, rank asc, word asc sort",
+            "greedy prefix-free reduction for delimiterless transport decodability"
+          ],
+          "notes": [
+            "Prompt payload prefers literal spaces.",
+            "Transport payload prefers delimiterless concatenation for OpenAI tokenizers."
+          ]
+        }
+      }
+    }
+  ],
+  "roundTrips": [
+    {
+      "id": "openai-cross-v1-roundtrip",
+      "logical": {
+        "profileId": "openai-cross-v1",
+        "atoms": [
+          "about",
+          "their",
+          "there",
+          "which"
+        ]
+      },
+      "renderings": {
+        "prompt": "about their there which",
+        "transport": "abouttheirtherewhich",
+        "envelope": "tk1_oa1_abouttheirtherewhich_29jd7"
+      }
+    },
+    {
+      "id": "openai-cross-underscore-v1-roundtrip",
+      "logical": {
+        "profileId": "openai-cross-underscore-v1",
+        "atoms": [
+          "about",
+          "their",
+          "there",
+          "which"
+        ]
+      },
+      "renderings": {
+        "prompt": "about their there which",
+        "transport": "about_their_there_which",
+        "envelope": "tk1~oa1u~about_their_there_which~1gp02"
+      }
+    },
+    {
+      "id": "openai-cross-v1-alt",
+      "logical": {
+        "profileId": "openai-cross-v1",
+        "atoms": [
+          "other",
+          "think",
+          "really",
+          "great"
+        ]
+      },
+      "renderings": {
+        "prompt": "other think really great",
+        "transport": "otherthinkreallygreat",
+        "envelope": "tk1_oa1_otherthinkreallygreat_2r2zw"
+      }
+    }
+  ],
+  "invalidPayloads": [
+    {
+      "id": "empty-prompt",
+      "profileId": "openai-cross-v1",
+      "codecId": "prompt",
+      "value": "",
+      "reason": "empty payload"
+    },
+    {
+      "id": "invalid-prefix-transport",
+      "profileId": "openai-cross-v1",
+      "codecId": "transport",
+      "value": "aboutzzz",
+      "reason": "unknown atom suffix"
+    },
+    {
+      "id": "openai-cross-underscore-v1-double-separator",
+      "profileId": "openai-cross-underscore-v1",
+      "codecId": "transport",
+      "value": "about__their",
+      "reason": "empty separated atom"
+    }
+  ],
+  "invalidEnvelopes": [
+    {
+      "id": "openai-cross-v1-bad-checksum",
+      "profileId": "openai-cross-v1",
+      "value": "tk1_oa1_abouttheirtherewhich_29jd0",
+      "reason": "checksum mismatch"
+    },
+    {
+      "id": "openai-cross-v1-bad-prefix",
+      "profileId": "openai-cross-v1",
+      "value": "zz1_oa1_abouttheirtherewhich_29jd7",
+      "reason": "unexpected prefix"
+    },
+    {
+      "id": "openai-cross-underscore-v1-bad-checksum",
+      "profileId": "openai-cross-underscore-v1",
+      "value": "tk1~oa1u~about_their_there_which~1gp00",
+      "reason": "checksum mismatch"
+    },
+    {
+      "id": "openai-cross-underscore-v1-bad-prefix",
+      "profileId": "openai-cross-underscore-v1",
+      "value": "zz1~oa1u~about_their_there_which~1gp02",
+      "reason": "unexpected prefix"
+    }
+  ],
+  "deterministicGeneration": [
+    {
+      "id": "openai-cross-v1-generate-4",
+      "profileId": "openai-cross-v1",
+      "length": 4,
+      "randomHex": "00000000000000010000000200000003",
+      "logical": {
+        "profileId": "openai-cross-v1",
+        "atoms": [
+          "about",
+          "their",
+          "there",
+          "which"
+        ]
+      },
+      "renderings": {
+        "prompt": "about their there which",
+        "transport": "abouttheirtherewhich",
+        "envelope": "tk1_oa1_abouttheirtherewhich_29jd7"
+      }
+    },
+    {
+      "id": "openai-cross-underscore-v1-generate-4",
+      "profileId": "openai-cross-underscore-v1",
+      "length": 4,
+      "randomHex": "00000000000000010000000200000003",
+      "logical": {
+        "profileId": "openai-cross-underscore-v1",
+        "atoms": [
+          "about",
+          "their",
+          "there",
+          "which"
+        ]
+      },
+      "renderings": {
+        "prompt": "about their there which",
+        "transport": "about_their_there_which",
+        "envelope": "tk1~oa1u~about_their_there_which~1gp02"
+      }
+    }
+  ]
+}

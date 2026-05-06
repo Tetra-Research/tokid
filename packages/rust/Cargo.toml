@@ -1,0 +1,15 @@
+[package]
+name = "tokid"
+version = "0.1.0-alpha.1"
+edition = "2021"
+description = "Token-native IDs for LLM-facing systems"
+license = "ISC"
+
+[dependencies]
+hex = "0.4"
+num-bigint = "0.4"
+rand = "0.8"
+regex = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"

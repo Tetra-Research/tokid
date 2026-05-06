@@ -5,10 +5,11 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const packageRoot = join(rootDir, "packages", "js");
 
 function run(command, args, options = {}) {
   return execFileSync(command, args, {
-    cwd: rootDir,
+    cwd: packageRoot,
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
     ...options,
@@ -28,7 +29,7 @@ try {
     throw new Error("npm pack did not produce a tarball");
   }
 
-  tarballPath = join(rootDir, tarballName);
+  tarballPath = join(packageRoot, tarballName);
 
   writeFileSync(
     join(tempDir, "package.json"),
