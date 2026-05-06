@@ -13,7 +13,7 @@
 
 - [x] 3.1 Add missing PyPI metadata and a repeatable build/upload dry-run path for the Python SDK
 - [x] 3.2 Add missing crates.io metadata and a repeatable publish dry-run path for the Rust SDK
-- [ ] 3.3 Define the Go module versioning and tagging policy, then document and execute the first official Go module release tag
+- [x] 3.3 Define the Go module versioning and tagging policy, then document and execute the first official Go module release tag
 - [ ] 3.4 Publish or tag the Wave 2 SDKs that pass their registry-specific hardening checks and update docs to reflect their live status
 
 ## 4. Wave 3: Maven Central and NuGet

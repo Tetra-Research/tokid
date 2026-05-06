@@ -12,7 +12,7 @@ Capability tier: `core`.
 Runtime target: Go `1.22+`.
 Module path: `github.com/Tetra-Research/tokid/packages/go`.
 Registry readiness: `publish-now`.
-Registry status: Wave 2 target, not yet tagged.
+Registry status: tag pushed as `packages/go/v0.1.0-alpha.3`; anonymous `go get` still depends on repo visibility and auth.
 
 ## What You Get
 

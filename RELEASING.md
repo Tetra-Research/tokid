@@ -64,7 +64,7 @@ Current rollout state:
 |---|---|---|---|---|
 | JavaScript / TypeScript | npm `tokid` | 1 | `publish-now` | live on npm; `alpha` dist-tag is `0.1.0-alpha.3` |
 | Python | PyPI `tokid` | 2 | `publish-now` | live on PyPI as `0.1.0a3` |
-| Go | `github.com/Tetra-Research/tokid/packages/go` | 2 | `publish-now` | not yet tagged |
+| Go | `github.com/Tetra-Research/tokid/packages/go` | 2 | `publish-now` | tag pushed as `packages/go/v0.1.0-alpha.3`; anonymous `go get` still depends on repo visibility |
 | Rust | crates.io `tokid` | 2 | `publish-now` | not yet published |
 | Java / Kotlin | Maven Central `io.tokid:tokid` | 3 | `publish-now` | not yet published |
 | C# / .NET | NuGet `Tokid` | 3 | `publish-now` | not yet published |
@@ -129,6 +129,6 @@ Current known blockers from this checkout:
 - npm is live; the current `alpha` dist-tag is `0.1.0-alpha.3` while `latest` still points at `0.1.0-alpha.1`
 - PyPI is live as `0.1.0a3`
 - crates.io publish is blocked locally until a cargo token is configured
-- official Go release tagging is still pending execution for the first public module tag
+- Go tag `packages/go/v0.1.0-alpha.3` is pushed, but anonymous module resolution still depends on repo visibility and auth
 - Maven Central deploy is blocked locally until credentials and signing are configured
 - NuGet push is blocked locally until a NuGet API key is configured
