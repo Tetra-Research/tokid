@@ -45,7 +45,7 @@ After publish, the dependency will be:
 <dependency>
   <groupId>io.tokid</groupId>
   <artifactId>tokid</artifactId>
-  <version>0.1.0-alpha.1</version>
+  <version>0.1.0-alpha.2</version>
 </dependency>
 ```
 

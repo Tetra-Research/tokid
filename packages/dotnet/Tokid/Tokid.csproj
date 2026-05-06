@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>Tokid</PackageId>
-    <Version>0.1.0-alpha.1</Version>
+    <Version>0.1.0-alpha.2</Version>
     <Authors>Tyler O'Briant</Authors>
     <Description>Token-native IDs for LLM-facing systems</Description>
     <PackageProjectUrl>https://github.com/Tetra-Research/tokid/tree/main/packages/dotnet</PackageProjectUrl>

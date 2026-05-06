@@ -33,12 +33,12 @@ All first-party SDKs track the same logical alpha line, but each registry uses i
 
 | Ecosystem | Release version |
 |---|---|
-| npm | `0.1.0-alpha.1` |
-| PyPI | `0.1.0a1` |
-| crates.io | `0.1.0-alpha.1` |
-| Go module tag | `packages/go/v0.1.0-alpha.1` |
-| Maven Central | `0.1.0-alpha.1` |
-| NuGet | `0.1.0-alpha.1` |
+| npm | `0.1.0-alpha.2` |
+| PyPI | `0.1.0a2` |
+| crates.io | `0.1.0-alpha.2` |
+| Go module tag | `packages/go/v0.1.0-alpha.2` |
+| Maven Central | `0.1.0-alpha.2` |
+| NuGet | `0.1.0-alpha.2` |
 
 The canonical release number is driven from the JavaScript SDK version for this alpha line. When the logical release changes, update every first-party package version before tagging or uploading.
 

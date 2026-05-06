@@ -106,7 +106,7 @@ After tagged public releases begin, you will be able to depend on the module dir
 The first planned public tag is:
 
 ```bash
-go get github.com/Tetra-Research/tokid/packages/go@v0.1.0-alpha.1
+go get github.com/Tetra-Research/tokid/packages/go@v0.1.0-alpha.2
 ```
 
 ## Prompt, Transport, Envelope
